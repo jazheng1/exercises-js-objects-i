@@ -5,13 +5,16 @@ let process = require('process');
 
 // Here's one way we might do it using an array.
 
-let user = {};
+let user = {
+};
 
-user['firstName'] = '<Change This>';
-user['lastName'] = '<Change This>';
-user['currentLocation'] = '<Change This>';
+user['firstName'] = process.argv[2];
+user['lastName'] = process.argv[3];
+user['currentLocation'] = process.argv[4];
 user['favoriteSongs'] = ['One Song', 'Another Great Song', 'Last Great Song'];
 user['age'] = 108;
+user['favoriteMovies'] = ['Toy Story 4', 'The Lion King']
+user['favoriteFood'] = process.argv[5];
 
 // To get started, set user['canBeDisplayed'] to true instead of false
 user['canBeDisplayed'] = true;
@@ -33,10 +36,26 @@ if (user['age'] >= 100) {
 }
 
 console.log('Looks like you have great taste in music. Your favorite songs:');
+console.log(printFavorites(user['favoriteSongs']))
 
-for (let i = 0; i < user['favoriteSongs'].length; i += 1) {
-  let songPosition = i + 1;
-  let songName = user['favoriteSongs'][i];
+console.log('Wow those are some great movies')
+console.log(printFavorites(user['favoriteMovies']))
 
-  console.log(`${songPosition}. ${songName}`);
+console.log(`I see, you like ${user['favoriteFood']}`)
+if(user['favoirteFood'] === 'Waffles'){
+  console.log('Over Pancakes!?!?')
+}else {
+  console.log('good choice!')
+}
+
+function printFavorites(array){
+  let favThing = [];
+  for(let i = 0; i < array.length; i += 1){
+    let favName = array[i];
+    favThing.push(favName)
+  }
+  for(let i = 0; i < favThing.length; i += 1){
+    let favPosition = i + 1;
+    console.log(favPosition + '. ' + favThing[i])
+  }
 }

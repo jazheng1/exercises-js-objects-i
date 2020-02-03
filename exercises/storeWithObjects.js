@@ -8,25 +8,17 @@ let process = require('process');
   2. Implement userCanAffordSofa
 */
 
-// --- DELETE THE LINES STARTING HERE ---
-let removeThisToStart = true;
-
-if (removeThisToStart) {
-  console.log('Hey! Open up storeWithObjects.js to see how to get started.');
-  process.exit();
-}
-
-// --- DELETE THE LINES ENDING HERE ---
-
 /**
  * Creates and returns a new user (as an object).
  */
-function newUser(firstName, lastName, budget) {
+function newUser(firstName, lastName, budget, email) {
   let user = [];
 
   user['firstName'] = firstName;
   user['lastName'] = lastName;
   user['budget'] = budget;
+  user['email'] = email;
+
 
   return user;
 }
@@ -49,15 +41,15 @@ function newSofa(name, price) {
  */
 function userCanAffordSofa(user, sofa) {
   // This is your job. :)
-
+  console.log('We are here' + user['budget'])
   return user['budget'] >= sofa['price'];
 }
 
 let allUsers = [
-  newUser('Alyssa', 'Morris', 1800.00),
-  newUser('Mindy', 'Weaver', 200.00),
-  newUser('Louis', 'Washington', 850.00),
-  newUser('Kevin', 'Isaacs', 80.00),
+  newUser('Alyssa', 'Morris', 1800.00, 'AlMorris@davidson.edu'),
+  newUser('Mindy', 'Weaver', 200.00, 'MindWeaver420@yahoo.com'),
+  newUser('Louis', 'Washington', 850.00, 'LWash829@hotmail.omc'),
+  newUser('Kevin', 'Isaacs', 80.00, 'KI@gmail.com'),
 ];
 
 let sofa = newSofa('Nice Sofa', 800.00);

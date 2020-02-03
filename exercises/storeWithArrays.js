@@ -8,25 +8,16 @@ let process = require('process');
   2. Implement userCanAffordSofa
 */
 
-// --- DELETE THE LINES STARTING HERE ---
-let removeThisToStart = true;
-
-if (removeThisToStart) {
-  console.log('Hey! Open up storeWithArrays.js to see how to get started.');
-  process.exit();
-}
-
-// --- DELETE THE LINES ENDING HERE ---
-
 /**
  * Creates and returns a new user (as an array).
  */
-function newUser(firstName, lastName, budget) {
+function newUser(firstName, lastName, budget, email) {
   let user = [];
 
   user[0] = firstName;
   user[1] = lastName;
   user[2] = budget;
+  user[3] = email;
 
   return user;
 }
@@ -47,18 +38,26 @@ function newSofa(name, price) {
  * Returns `true` if the given user can afford to buy the given sofa
  * and `false` otherwise.
  */
-function userCanAffordSofa(user, sofa) {
-  // This is your job. :)
-}
 
 let allUsers = [
-  newUser('Alyssa', 'Morris', 1800.00),
-  newUser('Mindy', 'Weaver', 200.00),
-  newUser('Louis', 'Washington', 850.00),
-  newUser('Kevin', 'Isaacs', 80.00),
+  newUser('Alyssa', 'Morris', 1800.00, 'AlMorris@davidson.edu'),
+  newUser('Mindy', 'Weaver', 200.00, 'MindWeaver420@yahoo.com'),
+  newUser('Louis', 'Washington', 850.00, 'LWash829@hotmail.omc'),
+  newUser('Kevin', 'Isaacs', 80.00, 'KI@gmail.com'),
 ];
 
-let sofa = newSofa('Nice Sofa', 800.00);
+let sofa = [
+  newSofa('Nice Sofa', 800.00),
+  newSofa('Leather Sofa', 1000.00),
+  newSofa('Free Sofa', 0.00)
+];
+
+function userCanAffordSofa(user, sofa) {
+  // This is your job. :)
+  for(let i = 0; i < sofa.length; i++){
+    return user[2] >= sofa[i][1];
+  }
+}
 
 for (let user of allUsers) {
   console.log('--------------------');
@@ -67,10 +66,11 @@ for (let user of allUsers) {
   console.log(`Hi, ${user[0]}.`);
   console.log(`Checking whether you can afford a ${sofa[0]}, please hold on....`);
   console.log();
-
+  console.log(user[2])
   if (userCanAffordSofa(user, sofa)) {
     console.log('Congratulations!');
     console.log(`A ${sofa[0]} costs ${sofa[1]}, which is within your budget of ${user[2]}!`);
+    console.log( `We will be emialing you at ${user[3]}`)
   } else {
     console.log(`Sorry, ${user[0]}, but you can't afford a ${sofa[0]}.`);
     console.log(`Your budget is ${user[2]}, but a ${sofa[0]} costs ${sofa[1]}.`);
